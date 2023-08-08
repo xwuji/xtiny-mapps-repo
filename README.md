@@ -1,18 +1,61 @@
-# Vue 3 + TypeScript + Vite
+# 多应用Monorepo框架
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### 目录结构
 
-## Recommended IDE Setup
+```bash
+├── package.json
+├── packages
+│   ├── app-1
+│   ├── app-2
+│   ├── components
+│   └── utils
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1. `packages/app-*`是实际应用，可以替换和新建；
+2. `packages/components`是公共组件；
+3. `packages/utils`是公共库方法；
 
-## Type Support For `.vue` Imports in TS
+### 创建一个子应用
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+ 创建的应用名建议以`@mapps` 为前缀(scope)，进入packages 目录
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+```shell
+$ cd packages
+```
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+使用vite创建应用
+
+```shell
+$ pnpm create vite
+```
+
+使用vue-cli创建应用
+
+```shell
+$ vue create @mapps/xxx
+```
+
+也可以使用其他方式创建非vue的应用
+
+```shell
+$ npx create-react-app @mapps/xxx
+```
+
+### 修改package script
+
+将`app-*`替换成你的应用名（使用`-F/--filter`）或者目录名(使用`-C`)。
+
+```json
+  "scripts": {
+    "dev:app1": "pnpm run -C packages/app-1 dev",
+    "dev:app2": "pnpm run -C packages/app-2 dev",
+    "build:app1": "pnpm run -C packages/app-1 build",
+    "build:app2": "pnpm run -C packages/app-2 build",
+    "dev:mapps":"pnpm -r --filter @mapps/* run dev",
+    "build:mapps":"pnpm -r --filter @mapps/* run build",
+    "preview": "vite preview"
+  },
+```
+

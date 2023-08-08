@@ -4,19 +4,28 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev:app1": "pnpm run -C packages/apps/app-1 dev",
-    "dev:app2": "pnpm run -C packages/apps/app-2 dev",
-    "build:app1": "pnpm run -C packages/apps/app-1 build",
-    "build:app2": "pnpm run -C packages/apps/app-2 build",
+    "dev:app1": "pnpm run -C packages/app-1 dev",
+    "dev:app2": "pnpm run -C packages/app-2 dev",
+    "build:app1": "pnpm run -C packages/app-1 build",
+    "build:app2": "pnpm run -C packages/app-2 build",
+    "dev:mapps":"pnpm -r --filter @mapps/* run dev",
+    "build:mapps":"pnpm -r --filter @mapps/* run build",
     "preview": "vite preview"
   },
   "dependencies": {
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
     "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"
-  }
+  },
+  "packageManager": "pnpm@7.26.3"
 }

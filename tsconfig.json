@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "module": "es6",
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule":true,
+    "moduleResolution": "node",
+    // "declaration": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./packages/*"
+      ]
+    }
+  },
+  "include": [
+    "./packages"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
