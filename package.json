@@ -4,12 +4,12 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "dev:mapps":"pnpm -r --filter @mapps/* run dev",
+    "build:mapps":"pnpm -r --filter @mapps/* run build",
     "dev:app1": "pnpm run -C packages/app-1 dev",
     "dev:app2": "pnpm run -C packages/app-2 dev",
     "build:app1": "pnpm run -C packages/app-1 build",
     "build:app2": "pnpm run -C packages/app-2 build",
-    "dev:mapps":"pnpm -r --filter @mapps/* run dev",
-    "build:mapps":"pnpm -r --filter @mapps/* run build",
     "preview": "vite preview"
   },
   "dependencies": {
